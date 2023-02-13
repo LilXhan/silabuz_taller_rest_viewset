@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  api:
+    container_name: taller-viewset
+    image: api-rest-django
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    expose:
+      - 8000
+    volumes:
+      - .:/app/
+    command: python manage.py runserver 0.0.0.0:8000
+
+networks:
+  default:
+    name: development
+    external: true
